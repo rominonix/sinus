@@ -2,7 +2,6 @@
     <div class="container">
         <div class="top">
             <img class="top-img" src="../assets/Rectangle 52.svg">
-            <!-- <p class="sinus-store">#SINUS-STORE</p> -->
         </div>
          <nav >
             <p @click="bindCategory('skateboards')">skateboards</p>
@@ -61,10 +60,7 @@ beforeMount() {
     }
 }
 </script>
-<<<<<<< HEAD
 
-=======
->>>>>>> cart
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
@@ -157,7 +153,6 @@ button {
 
 .product-container p, button {
     margin-right:90px;
-<<<<<<< HEAD
 }
 
 .top-img {
@@ -165,20 +160,8 @@ button {
     box-shadow: -40px 0 0 -20px #B2D1A8;    
 }
 
-/* .sinus-store {
-    position:relative;
-    right:5rem;
-    top:12rem;
-    color:white;
-    font-family: "Schoolbell", cursive;
-    letter-spacing: 0.3rem;
-    font-size:36px;
-} */
 
 
 
 
 </style>
-=======
-}
->>>>>>> cart
