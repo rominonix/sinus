@@ -1,33 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import userInfo from "./user.store.js"
 
 Vue.use(Vuex)
 
 import * as API from '../api/api'
 
 export default new Vuex.Store({
+
+  modules:{
+    userInfo
+  },
+
   state: {
     images: "",
     currentProducts: "",
-    cart: [{"title": "NaturalXL", "price": 799, "quantity": 1, "id": "IfU7QWLy2KzU67Fo", "imgFile": "skateboard-naturalXL.svg" }, { "title": "NaturalXL", "price": 1, "quantity": 1, "id": "IfU7QWLy2KzU67Fo", "imgFile": "skateboard-naturalXL.svg" }],
-    loggedIn: false,
-    user: {
-      _id: '', // generated server side
-      email: '',
-      password: '', // hashed serverside
-      name: '',
-      role: '', // or customer
-      address: {
-        street: '',
-          zip: '',
-          city: ''
-      },
-      orderHistory: []
-    },
+    cart:[], 
   },
 
   getters: {
-    
+
     singleProductImg: (state) => (id) => {
       const data = Object.values(state.images.data).filter(item => item._id == id);
       return data;
@@ -37,7 +29,7 @@ export default new Vuex.Store({
 
   mutations: {
 
-    storeImages(state,database) {
+    storeImages(state, database) {
       state.images = database;
     },
 
@@ -47,49 +39,82 @@ export default new Vuex.Store({
     },
 
     storeIntoCart(state, item) {
-      state.cart.push({
-        title: item.title,
-        price: item.price,
-        quantity: 1,
-        id: item._id
-      })
+      const index = state.cart.findIndex(element => element._id === item._id);
+
+      if (index === -1) {
+        item.quantity = 1;
+        state.cart.push(item);
+      } else {
+        item.quantity += 1;
+
+        state.cart = [
+          ...state.cart.slice(0, index),
+          item,
+          ...state.cart.slice(index + 1),
+        ];
+      }
+    },
+    removeItemCart(state, item) {
+      const index = state.cart.findIndex(element => element._id === item._id);
+
+      if (index === -1) {
+        item.quantity = 1;
+        state.cart.push(item);
+      } else {
+        item.quantity -= 1;
+
+        state.cart = [
+          ...state.cart.slice(0, index),
+          item,
+          ...state.cart.slice(index + 1),
+        ];
+      }
+    },
+    // console.log(state.cart)
+    // state.cart.push({
+    //   title: item.title,
+    //   price: item.price,
+    //   quantity: 1,
+    //   id: item._id,
+    //   imgFile: item.imgFile
+    // })
+
+    removeItemFromCart(state, item) {
+      let productId = item._id
+      let cart = state.cart
+
+      if (cart[productId] != undefined) {
+        cart[productId].quantity -= 1;
+      } else {
+        cart[productId] = item
+        cart[productId].quantity = 1
+      }
     },
 
-  
-    updateLoggedIn(state, loggedIn){
-      state.loggedIn = loggedIn;
-    },
 
-    currentUser(state, user) {
-      state.user = user;
-    },
-
-    // loginUser(state, login){
-    //   state.loginform = login
-    // }
   },
 
   actions: {
 
     async drawImage(context) {
-       const data = await API.getProducts();
-       context.commit('storeImages', data);
+      const data = await API.getProducts();
+      context.commit('storeImages', data);
     },
 
     loadProducts(context, binder) {
-      if(binder == 'hoodies') {
-          const category = "clothes";
-          context.commit('loadHoodies', category);
+      if (binder == 'hoodies') {
+        const category = "clothes";
+        context.commit('loadHoodies', category);
       }
-      else if(binder == 'sneakers') {
+      else if (binder == 'sneakers') {
         const category = "sneakers";
         context.commit('loadHoodies', category);
       }
-      else if(binder == 'skateboards') {
+      else if (binder == 'skateboards') {
         const category = "board";
         context.commit('loadHoodies', category);
       }
-      else if(binder == 'wheels') {
+      else if (binder == 'wheels') {
         const category = "wheels";
         context.commit('loadHoodies', category);
       }
@@ -99,13 +124,6 @@ export default new Vuex.Store({
       }
     },
       //  context.commit('pushIntoArray', data);
-    
-
-    async user(context) {
-      const me = await API.getUserInfo();
-      console.log(me);
-      context.commit('currentUser', me);
-    }
   }
 
 })

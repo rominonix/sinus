@@ -13,8 +13,8 @@ name:'MyAccount',
 
 methods:{
     logOut(){
-        window.sessionStorage.removeItem('LoggedIn')
-        window.sessionStorage.removeItem('token')
+        sessionStorage.removeItem('LoggedIn')
+        sessionStorage.removeItem('token')
         this.$store.commit('updateLoggedIn',false)
         this.$router.push('/')
         this.$emit('close')
@@ -50,14 +50,14 @@ li:hover{
 }
 
 .my-account{
-    background-color:#F5ADB8;
+    background-color: #F5ADB8;
     width: 15rem;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: -10px 10px #FFEBD3; 
+    box-shadow: -10px 10px  #FFEBD3; 
 }
 
 #talkbubble {

@@ -1,13 +1,13 @@
 <template>
 <div class="my-account">
-
-  <h2>My account</h2>
+  <h2>Personal data</h2>
   <ul>
     <li>
-      Name: {{ user.name }} <br> 
-      Address: {{ user.address.street }}, {{ user.address.zip }}, {{ user.address.city }}<br>
-      Email: {{ user.email }} <br>
-      Role: {{ user.role }}
+     <p class="profile-info"><strong>Name</strong>: {{ user.name }} <br> </p> 
+    <p class="profile-info"><strong>Address</strong>: {{ user.address.street }}, {{ user.address.zip }}, {{ user.address.city }}<br></p> 
+       <p class="profile-info"><strong>Email</strong>: {{ user.email }} <br></p> 
+       <p class="profile-info"><strong>Role</strong>: {{ user.role }}</p> 
+       <p class="profile-info"><strong>Order history</strong>: {{ user.orderHistory }}</p>
     </li>
   </ul>
 </div>
@@ -20,7 +20,7 @@ export default {
 
   computed:{
     user(){
-      return this.$store.state.user
+      return this.$store.state.userInfo.user
     }
   }
   
@@ -28,10 +28,20 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 .my-account{
- padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+  padding: 0 3rem;
 }
 
+li {
+  padding: 3%;
+  font-size: 1.2rem;
+}
+.profile-info{
+  padding: 4%;
+}
 </style>
