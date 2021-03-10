@@ -50,7 +50,7 @@
             <button class="back-btn" @click="goToProduct">Go back</button>
           </div>
           <div class="proceed">
-            <button class="proceed-btn">Checkout</button>
+            <button class="proceed-btn" @click="goToCheckout">Checkout</button>
           </div>
         </div>
         <div class="tos">

@@ -47,14 +47,42 @@
 
     <div class="order">
       <div class="item">
-        <div class="img-product">Img Product</div>
+        <div
+          class="items-container"
+          v-for="item in drawItems"
+          v-bind:key="item.id"
+        >
+          <div class="product-img">
+            <img :src="require(`../assets/${item.imgFile}`)" />
+          </div>
+          <div class="item-desc">
+            <h3 class="product-title">{{ item.title }}</h3>
+            <p class="item-details">Color: {{ item.color }}</p>
+            <p class="item-details">
+              Quantity:
+              <button class="minus" @click="removeItem(item)">-</button>
+              <!-- {{ item.quantity }} -->
+              {{ item.quantity }}
+              <button class="plus" @click="addItem(item)">+</button>
+            </p>
+            <!-- <p class="item-details">{{item.size}}</p> -->
+            <p class="item-details">Price: {{ item.price }} SEK</p>
+            <img
+              class="trash"
+              src="../assets/trash.svg"
+              @click="deleteItem(item)"
+            />
+          </div>
+        </div>
+
+        <!-- <div class="img-product">Img Product</div>
         <div class="item-info">
           <p class="name-product"></p>
           <p>quantity</p>
           <p>size</p>
           <p>PRICE</p>
           <img src="../assets/trash.svg" alt="" />
-        </div>
+        </div> -->
       </div>
       <div class="total">TOTAL CART</div>
       <p class="vat">Including VAT</p>
@@ -65,7 +93,32 @@
 <script>
 
 export default {
-    name: 'Checkout'
+    name: 'Checkout',
+
+    computed: {
+    drawItems() {
+      let cart = this.$store.state.cart;
+      // let page_size = 3;
+      // let page_number = 1;
+      // let pages = this.paginate(cart, page_size, page_number);
+
+      let cartArr = [];
+
+      for (var key in cart) {
+        cartArr.push(cart[key]);
+      }
+
+      // if (this.nextPage(page_number)) {
+      //   pages = this.paginate(cartArr, page_size, page_number);
+      // } else if (this.prevPage(page_number)) {
+      //   pages = this.paginate(cartArr, page_size, page_number);
+      // } else {
+      //   pages = this.paginate(cartArr, page_size, page_number);
+      // }
+
+      return cartArr;
+    },
+  }
 
 }
 </script>
