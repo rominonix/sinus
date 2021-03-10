@@ -36,7 +36,7 @@ const routes = [
     path: '/new-account',
     name: 'NewAccount',
     component: NewAccount
-  }, 
+  },
   {
     path: '/single-product/:id',
     name: 'SingleProduct',
