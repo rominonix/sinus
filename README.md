@@ -1,20 +1,5 @@
 # SINUS Webshop
 
-## Arbetssätt
-Samla era erfarenheter från Kanban, Scrum och diskussionerna av Modern Agile och kom överens i 
-gruppen om vilka delar och hur ni ska inkorporera detta i ert arbete. 
-Dokumentera vad ni kommer överens om i README.md i ert repository.
-
-## Instruktioner
-Ni ska bygga en FrontEnd till en färdig BackEnd. Se `SINUS Webshop - REST API` nedan för mer information.
-
-Inom gruppen har ni en uppsättning mockups från UI-kursen i höstas, välj en av dessa mockups att utgå ifrån.
-Om ni inte kommer överens om vilken ni ska använda så får ni be läraren om en annan.
-
-Skapa en trello board och bjud alla i gruppen, inkl läraren.
-
-## SINUS Webshop
-
 SINUS Webshop är en onlinebutik som säljer skateboards och tillbehör.
 
 Webshoppen ska ha 3 olika lägen
@@ -156,19 +141,3 @@ Det ska finnas en `Admin Area`-view med ett CRUD-gränssnitt för alla produkter
 } 
 ```
 
-## Bedömningskritierer
-
-### Godkänt
-
-* State management i Vuex
-* Vue Router för navigation
-* Demonstrera komponenter, props, emits, data, computed, events
-* API-abstraktion till egen modul
-* Tydlig feature breakdown i Trello
-* Dokumenterat agilt arbetssätt i README
-* Inlämnad utvärdering i slutet
-
-
-### Väl godkänt
-* {...godkänt}
-* Admin-view för CRUD av produkter
