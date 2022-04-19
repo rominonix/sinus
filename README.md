@@ -1,7 +1,7 @@
 # SINUS Webshop
 
-## FIGMA 
-[Figma skiss](https://www.figma.com/proto/3UJwVLlNILObpHDRHbZrND/Sinus-webshop?node-id=21%3A2&scaling=min-zoom)
+## FIGMA DESIGN
+[Webshop skiss](https://www.figma.com/proto/3UJwVLlNILObpHDRHbZrND/Sinus-webshop?node-id=21%3A2&scaling=min-zoom)
 
 # SINUS Webshop - REST API
 
