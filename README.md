@@ -1,28 +1,7 @@
 # SINUS Webshop
 
-SINUS Webshop är en onlinebutik som säljer skateboards och tillbehör.
-
-Webshoppen ska ha 3 olika lägen
-* Anonym besökare
-* Inloggad Kund
-* Inloggad Admin (VG-krav)
-
-### Anonym besökare
-Det ska finnas en `registrerings`-view med ett registreringsformulär.
-En order kan genomföras som anonym användare.
-
-### Inloggad Kund
-Det ska finnas en `My Account`-view med information om ditt konto och din orderhistorik.
-
-### Inloggad Admin (VG-krav)
-Det ska finnas en `Admin Area`-view med ett CRUD-gränssnitt för alla produkter.
-
-### Övriga Views och Features
-* En view för produktlista
-* En view utcheckning med formulär för kontaktinfo och betalinfo, fylls i automagiskt om man är inloggad
-* modal för enstaka produkt
-* Modal för kundkorg
-* Modal för inloggningsformulär
+## FIGMA 
+[Figma skiss](https://www.figma.com/proto/3UJwVLlNILObpHDRHbZrND/Sinus-webshop?node-id=21%3A2&scaling=min-zoom)
 
 # SINUS Webshop - REST API
 
